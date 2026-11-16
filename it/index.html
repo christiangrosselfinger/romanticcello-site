@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Romantic Cello — Christian Grosselfinger</title>
+<meta content="Romantic Cello — le melodie che tutti portano già dentro, cantate al violoncello su arrangiamenti orchestrali completi. Violoncello solo, circa 90 minuti." name="description"/>
+<!-- v3 — rebuilt on the Home/index_v3 design system (18 Aug 2026).
+     romantic-cello.html (APPROVED REFERENCE) and _v2.html are both left untouched. -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --cream:#FBF7EF;
+  --cream-2:#F4EDE1;
+  --ink:#2E2422;
+  --muted:#7B6A5E;
+  --rule:#E2D5BE;
+  --gold:#B8873B;
+  --gold-lt:#D4AC6A;
+  --maxw:1180px;
+}
+
+/* ═══════════ PROJECT PALETTES ═══════════
+   Identical block to Home/index_v3.html — one palette per show, sampled from the
+   logo artwork. Put the matching .pal-* class on <body> and the page inherits it.
+     --p-deep  darkest ground      --p-mid   structural mid tone
+     --p-metal material accent     --p-metal-lt  its highlight
+     --p-key   identifying hue     --p-key-lt    its light form
+     --p-text  body copy           --p-card  card ground                          */
+
+/* CELLO STORM — black, grey, red + gold detail */
+.pal-storm{
+  --p-deep:#0C0C0C;   --p-mid:#1A1A19;
+  --p-metal:#AAAAA5;  --p-metal-lt:#A8793C;
+  --p-key:#E33134;    --p-key-lt:#EC7375;
+  --p-text:#C2C2BE;   --p-card:#0C0C0C;
+}
+/* EPIC SCORES — blue, metallic grey */
+.pal-epic{
+  --p-deep:#050E1E;   --p-mid:#12293C;
+  --p-metal:#70848C;  --p-metal-lt:#C0D1D6;
+  --p-key:#2E6F91;    --p-key-lt:#7FC2E3;
+  --p-text:#C6D5DD;   --p-card:#0F3B5C;
+}
+/* ROMANTIC CELLO — deep reddish dark brown + cream.
+   The only LIGHT page of the three: this show's palette is cream-led, and its logo
+   measures 57/255 mean luminance — it was drawn for a cream ground and cannot sit
+   on a dark one. The page is built around that fact rather than fighting it. */
+.pal-romantic{
+  --p-head:#2E2422; --p-line:#E2D5BE; --p-panel:#FBF7EF; --p-tint:rgba(168,121,60,.14);
+  --p-deep:#561118;   --p-mid:#3E0C11;
+  --p-metal:#A8793C;  --p-metal-lt:#C6A880;   /* cream, gold, wine-brown — revised 18 Aug 2026 */
+  --p-key:#7B454B;    --p-key-lt:#93676B;
+  --p-text:#67292F;   --p-card:#FCF4E5;   --p-cream:#F4EDE1;
+}
+
+html{background:var(--cream);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);
+  line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;line-height:1.2}
+p{margin-bottom:1.05em;font-weight:300;font-size:16.5px;color:var(--p-text)}
+
+.sec-label{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.4vw,38px);
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:6px}
+.sec-rule{width:88px;height:1px;background:var(--p-metal);margin-bottom:32px}
+.center{text-align:center}
+.center .sec-rule{margin-left:auto;margin-right:auto}
+section{padding:clamp(64px,9vw,104px) 0}
+.alt{background:var(--cream-2)}
+
+/* ═══ HERO ═══
+   A 50/50 split rather than text-over-photo: it echoes this show's card on the
+   home page, and it gives the dark maroon logo its own cream ground at full
+   contrast while the photograph stays completely undimmed. */
+.hero{position:relative;min-height:94svh;display:grid;grid-template-columns:1fr 1.2fr;
+  background:var(--p-card);overflow:hidden}
+.hero-photo{position:relative;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
+/* the fade lives ON the photo as a mask — one element, so nothing can drift apart
+   at the seam the way two stacked boxes did */
+.hero-photo img{
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.5) 11%,#000 32%);
+          mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.5) 11%,#000 32%)}
+.hero-in{display:flex;flex-direction:column;justify-content:center;min-width:0;
+  padding:clamp(34px,5vw,70px) clamp(24px,4vw,54px);position:relative;z-index:2}
+.hero-back{position:absolute;top:clamp(20px,3.4vh,34px);left:clamp(24px,4vw,54px);z-index:3}
+.hero-back a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--p-key);text-decoration:none}
+.hero-back a:hover{color:var(--p-metal)}
+.hero-logo{width:min(380px,82%);height:auto;display:block;margin:0 0 26px}
+.hero-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(21px,2.5vw,29px);color:var(--p-deep);line-height:1.3;margin:0 0 14px}
+.hero-sub{font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--p-metal);margin:0 0 26px}
+
+/* ═══ BUTTONS ═══ */
+.btn-row{display:flex;flex-wrap:wrap;gap:13px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;
+  border:1px solid var(--p-deep);color:var(--p-deep);text-decoration:none;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:transparent;
+  transition:all .25s ease}
+.btn:hover{background:var(--p-deep);color:var(--cream)}
+.btn.key{background:var(--p-deep);color:var(--cream)}
+.btn.key:hover{background:var(--p-mid)}
+.btn.gold{border-color:var(--p-metal);color:var(--p-metal)}
+.btn.gold:hover{background:var(--p-metal);color:#fff}
+
+/* ═══ SPLIT SECTIONS ═══ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,6vw,68px);align-items:center}
+/* the metallic frame from the hub's door cards — here in this show's gold */
+.framed{border:3px solid transparent;border-image-slice:1;
+  border-image-source:linear-gradient(140deg,var(--p-metal) 0%,var(--p-deep) 24%,
+    var(--p-metal-lt) 50%,var(--p-deep) 76%,var(--p-metal) 100%);
+  box-shadow:0 18px 46px rgba(46,36,34,.2);display:block}
+.split .col-img img{width:100%;height:auto;display:block}
+p.lead{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,26px);
+  font-style:italic;color:var(--p-key-lt);font-weight:300;line-height:1.45}
+strong{font-weight:500;color:var(--ink)}
+em{font-style:italic}
+
+/* ═══ QUOTE BAND ═══ */
+.quote{background:var(--p-deep);color:#F6EEDF;text-align:center;padding:clamp(56px,8vw,92px) 0}
+.quote p{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(22px,3.2vw,33px);color:#F6EEDF;max-width:26ch;margin:0 auto 14px;
+  line-height:1.4;font-weight:300}
+.quote cite{font-style:normal;color:var(--p-metal-lt);font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif}
+
+/* ═══ WATCH ═══ (portrait reels) */
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vid{position:relative;display:block;overflow:hidden;aspect-ratio:9/16;
+  background:var(--p-mid);transition:transform .35s ease,box-shadow .35s ease}
+.vid img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s ease,opacity .3s ease}
+.vid .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  pointer-events:none}
+.vid .play span{width:62px;height:62px;border-radius:50%;background:rgba(251,247,239,.92);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.35);
+  transition:all .3s ease}
+.vid .play span::after{content:"";border-left:17px solid var(--p-deep);
+  border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.vid:hover{transform:translateY(-6px);
+  box-shadow:0 26px 58px rgba(46,36,34,.26),0 0 0 1px rgba(168,121,60,.6),0 0 34px rgba(168,121,60,.34)}
+.vid:hover img{transform:scale(1.04);opacity:.9}
+.vid:hover .play span{background:var(--p-metal-lt)}
+
+/* ═══ REPERTOIRE ═══ */
+.rep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.rep-cat{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--p-key-lt);
+  margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--rule)}
+.rep-list{list-style:none}
+.rep-list li{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--ink);padding:5px 0}
+.rep-list li em{font-size:14px;color:var(--muted);font-family:'Inter',sans-serif}
+.rep-note{margin-top:40px;padding:26px 30px;background:var(--cream);
+  border-left:3px solid var(--p-metal);max-width:70ch}
+.alt .rep-note{background:var(--cream-2)}
+
+/* ═══ FOR VENUES ═══ (the one dark band on this page) */
+.venues{background:var(--p-deep);color:#EFE4D4}
+.venues .sec-label{color:var(--p-metal-lt)}
+.venues .sec-rule{background:var(--p-metal)}
+.venues p{color:#DCCDBC}
+.venues strong{color:#fff}
+.spec{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin:32px 0 8px}
+.spec-item{border-left:2px solid var(--p-metal);padding-left:16px}
+.spec-k{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--p-metal-lt);margin-bottom:5px}
+.spec-v{font-family:'Cormorant Garamond',serif;font-size:19px;color:#F6EEDF;line-height:1.35}
+.venues .btn{border-color:var(--p-metal-lt);color:var(--p-metal-lt);background:transparent}
+.venues .btn:hover{background:var(--p-metal);border-color:var(--p-metal);color:#241014}
+
+/* ═══ LISTEN ═══ */
+.links{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.link-card{display:flex;align-items:center;justify-content:center;padding:20px 14px;
+  border:1px solid var(--rule);background:var(--cream);color:var(--p-deep);
+  text-decoration:none;text-align:center;font-size:12.5px;letter-spacing:.13em;
+  text-transform:uppercase;transition:all .25s ease}
+.link-card:hover{border-color:var(--p-metal);color:var(--p-metal);transform:translateY(-2px)}
+
+/* ═══ FOOTER ═══ */
+footer{background:var(--p-mid);color:#C9B79F;text-align:center;padding:62px 0 46px}
+footer .fname{width:230px;height:auto;opacity:.9;margin-bottom:22px;
+  transition:opacity .3s ease,transform .3s ease}
+.fname-link{display:inline-block;text-decoration:none}
+.fname-link:hover .fname{opacity:1;transform:scale(1.03)}
+footer a{color:var(--p-metal-lt);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.fmeta{font-size:13.5px;line-height:2;font-weight:300}
+.fcopy{margin-top:26px;font-size:11px;letter-spacing:.1em;color:#8A7361;text-transform:uppercase}
+.fcopy a{color:#8A7361;text-decoration:none;transition:color .25s ease}
+.fcopy a:hover{color:var(--p-metal-lt);text-decoration:none}
+.fcopy a.here{color:var(--p-metal-lt)}
+
+
+
+/* ═══ LANGUAGE SELECTOR ═══
+   DESIGN ONLY for now — every flag points at "#". Wix Multilingual (or whichever
+   route we choose) will supply the real per-language URLs. */
+.langs{display:flex;gap:8px;align-items:center;padding:5px 9px;border-radius:20px;
+  background:rgba(8,8,10,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.langs .lang{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:2px;
+  border:1px solid transparent;text-decoration:none;line-height:1;
+  transition:border-color .25s ease,background-color .25s ease,opacity .25s ease;opacity:.72}
+.langs .lang svg{width:19px;height:13px;display:block;border-radius:1px;flex:0 0 auto;
+  box-shadow:0 0 0 1px rgba(0,0,0,.28)}
+.langs .lang span{font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--p-metal-lt)}
+.langs .lang:hover{opacity:1;border-color:var(--p-metal);background:rgba(255,255,255,.07)}
+.langs .lang.is-current{opacity:1;border-color:var(--p-key)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+
+/* ═══ PAGE NAV — jump links to this page's own sections ═══
+   Lives at the .hero level (not inside hero-in) so it has the full-width hero to
+   lay out in, rather than being squeezed into the ~45%-wide text column. */
+.page-nav-wrap{position:absolute;top:clamp(58px,8.2vh,76px);left:0;right:0;
+  z-index:3;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.page-nav-wrap::-webkit-scrollbar{display:none}
+.page-nav{display:inline-flex;gap:2px;padding:5px 7px;border-radius:20px;width:max-content;
+  background:rgba(8,8,10,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.page-nav a{flex:0 0 auto;padding:6px 13px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--p-cream);text-decoration:none;white-space:nowrap;border-radius:14px;
+  transition:background-color .2s ease,color .2s ease}
+.page-nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+
+/* mobile menu — checkbox-driven, no JS. Burger replaces the pill row under 900px;
+   the overlay is fixed to the viewport. Sits top-right, on the photo side, well
+   clear of the "← All concerts" link so there's no fat-finger risk between them. */
+.nav-toggle-cb{position:absolute;opacity:0;pointer-events:none}
+.nav-burger{display:none;position:absolute;top:clamp(20px,3.4vh,34px);right:clamp(24px,4vw,54px);z-index:4;
+  width:56px;height:56px;border-radius:50%;align-items:center;justify-content:center;
+  background:rgba(8,8,10,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  cursor:pointer;font-size:26px;color:var(--p-metal-lt);line-height:1}
+.nav-overlay{display:none;position:fixed;inset:0;z-index:30;background:var(--p-deep);
+  flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.nav-overlay a{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(24px,7vw,32px);
+  color:var(--p-cream);text-decoration:none;padding:14px 24px}
+.nav-overlay a:active{color:var(--p-metal-lt)}
+.nav-close{position:absolute;top:24px;right:26px;font-size:30px;color:var(--p-metal-lt);
+  cursor:pointer;line-height:1}
+.nav-toggle-cb:checked ~ .nav-overlay{display:flex}
+.nav-toggle-cb:focus-visible ~ .nav-burger{outline:2px solid var(--p-metal-lt);outline-offset:2px}
+
+/* ═══ MEDIA ═══ */
+/* column count is set per page so the images divide evenly and leave no hole */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gal a{position:relative;display:block;overflow:hidden;background:var(--p-mid);
+  transition:transform .35s ease,box-shadow .35s ease}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease,opacity .3s ease}
+.gal a{aspect-ratio:1/1}
+.gal a:hover{transform:translateY(-4px);z-index:2;
+  box-shadow:0 20px 44px rgba(0,0,0,.4),0 0 0 1px var(--p-metal)}
+.gal a:hover img{transform:scale(1.06)}
+
+/* ═══ SHOWS (agenda) ═══ */
+.ag{max-width:880px;margin:0 auto}
+.ag-row{display:grid;grid-template-columns:124px 1fr auto;gap:22px;align-items:center;
+  padding:15px 14px;border-bottom:1px solid var(--p-line);border-radius:3px;
+  transition:background-color .3s ease,box-shadow .3s ease,transform .3s ease}
+.ag-row:first-child{border-top:1px solid var(--p-line)}
+.ag-date{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--p-metal);
+  letter-spacing:.05em;white-space:nowrap}
+.ag-venue{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--p-head);line-height:1.25}
+.ag-city{font-size:12.5px;color:var(--p-metal);margin-top:2px}
+.ag-tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;
+  border:1px solid var(--p-line);color:var(--p-metal);white-space:nowrap;border-radius:2px;
+  text-decoration:none;display:inline-block;transition:all .3s ease}
+/* this page's own dates are the point of the section — everything else recedes */
+.ag-row.mine{background:var(--p-tint);box-shadow:inset 3px 0 0 var(--p-key)}
+.ag-row.mine .ag-tag{background:var(--p-deep);color:var(--p-metal-lt);border-color:var(--p-key)}
+.ag-row:not(.mine){opacity:.62}
+.ag-row:not(.mine):hover{opacity:1;background:var(--p-panel)}
+/* AGENDA-CSS-START */
+.ag-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.ag-ticket{font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:2px;background:var(--p-key);color:#fff;border:1px solid var(--p-key);text-decoration:none;white-space:nowrap}
+.ag-ticket.off{background:transparent;color:var(--p-metal);border-color:var(--p-line)}
+.ag-row:not(.mine) .ag-ticket{opacity:.9}
+@media(max-width:560px){.ag-actions{justify-content:flex-start;margin-top:7px}.ag-tag{margin-top:0}}
+/* AGENDA-CSS-END */
+.ag-note{text-align:center;margin-top:28px;color:var(--p-metal);font-style:italic;font-size:15px}
+
+/* ═══ MAILING LIST ═══ */
+.ml{max-width:720px;margin:0 auto;text-align:center;padding:clamp(30px,4vw,46px) clamp(22px,4vw,44px);
+  border:1px solid var(--p-line);background:var(--p-panel)}
+.ml p{max-width:52ch;margin:0 auto 22px}
+.ml-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.ml-form input[type=email]{flex:1 1 300px;max-width:380px;padding:14px 16px;font-family:'Inter',sans-serif;
+  font-size:14px;color:var(--p-head);background:transparent;border:1px solid var(--p-line);border-radius:2px}
+.ml-form input[type=email]::placeholder{color:var(--p-metal)}
+.ml-form input[type=email]:focus{outline:none;border-color:var(--p-key-lt)}
+.ml-form button{padding:14px 30px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;cursor:pointer;background:var(--p-key);color:#fff;border:1px solid var(--p-key);
+  border-radius:2px;transition:filter .25s ease}
+.ml-form button:hover{filter:brightness(1.18)}
+.ml-small{margin:16px 0 0;font-size:12px;color:var(--p-metal)}
+/* Mailchimp's bot trap: must stay in the DOM and stay off-screen */
+.ml-hp{position:absolute;left:-5000px}
+
+@media(max-width:900px){
+  .gal{grid-template-columns:repeat(3,1fr)}
+  .ag-row{grid-template-columns:110px 1fr auto;gap:14px}
+}
+@media(max-width:560px){
+  .gal{grid-template-columns:repeat(2,1fr);gap:10px}
+  .ag-row{grid-template-columns:1fr;gap:5px;padding:14px 12px}
+  .ag-tag{justify-self:start;margin-top:7px}
+  .ml-form input[type=email]{flex:1 1 100%}
+  .ml-form button{width:100%}
+}
+
+/* ── tablet ── */
+@media(max-width:900px){
+  .split{grid-template-columns:1fr;gap:32px}
+  .rep-grid,.spec{grid-template-columns:1fr 1fr}
+  .links{grid-template-columns:repeat(3,1fr)}
+  section{padding:60px 0}
+  /* the hero-in column is the narrowest of the three show pages (it shares the
+     row with the portrait photo), so the pill row runs out of room well before
+     700px — the full-screen menu takes over from here down. */
+  .page-nav-wrap{display:none}
+  .nav-burger{display:flex}
+}
+/* ── phone ── */
+@media(max-width:700px){
+  /* stays split left/right even on phone — the portrait photo is meant to be seen
+     whole, not cropped into a short top strip. A shorter hero + a photo-heavy
+     ratio keeps the text column from reading as a big empty cream block. */
+  .hero{grid-template-columns:1fr 1.25fr;min-height:64svh}
+  .hero-in{padding:20px 16px 20px 20px}
+  .hero-back{position:static;margin-bottom:10px}
+  .nav-burger{top:16px;right:16px}
+  .hero-logo{width:min(230px,96%);margin-bottom:16px}
+  .hero-tag{font-size:clamp(14px,3.6vw,18px)}
+  .hero-sub{font-size:9.5px;margin-bottom:18px}
+  .btn-row{gap:8px}
+  .btn{padding:10px 14px;font-size:10px}
+}
+@media(max-width:560px){
+  .wrap{padding:0 20px}
+  .sec-label{letter-spacing:.16em}
+  .rep-grid,.spec{grid-template-columns:1fr}
+  .vid-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .links{grid-template-columns:1fr 1fr}
+  .btn{flex:1 1 auto;justify-content:center;padding:13px 18px;font-size:11px}
+}
+@media(hover:none){
+  .vid:hover{transform:none;box-shadow:none}
+  .vid:hover img{transform:none;opacity:1}
+  .link-card:hover{transform:none}
+}
+</style>
+<link rel="alternate" hreflang="en" href="https://romanticcello.christiangrosselfinger.com/" /><link rel="alternate" hreflang="fr" href="https://romanticcello.christiangrosselfinger.com/fr/" /><link rel="alternate" hreflang="de" href="https://romanticcello.christiangrosselfinger.com/de/" /><link rel="alternate" hreflang="it" href="https://romanticcello.christiangrosselfinger.com/it/" /><link rel="alternate" hreflang="pt" href="https://romanticcello.christiangrosselfinger.com/pt/" /><link rel="alternate" hreflang="x-default" href="https://romanticcello.christiangrosselfinger.com/" /></head>
+<body class="pal-romantic">
+<!-- ════════ HERO ════════ -->
+<header class="hero">
+<div class="hero-in">
+<div class="hero-back topbar"><a href="https://christiangrosselfinger.github.io/it/">← Tutti i concerti</a><div class="langs"><a aria-label="English" class="lang" href="/" hreflang="en" lang="en" title="English"><svg aria-hidden="true" viewbox="0 0 60 40"><rect fill="#012169" height="40" width="60"></rect><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"></path><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"></path><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="13"></path><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"></path></svg><span>EN</span></a><a aria-label="Français" class="lang" href="/fr/" hreflang="fr" lang="fr" title="Français"><svg aria-hidden="true" viewbox="0 0 60 40"><rect fill="#0055A4" height="40" width="20"></rect><rect fill="#fff" height="40" width="20" x="20"></rect><rect fill="#EF4135" height="40" width="20" x="40"></rect></svg><span>FR</span></a><a aria-label="Deutsch" class="lang" href="/de/" hreflang="de" lang="de" title="Deutsch"><svg aria-hidden="true" viewbox="0 0 60 40"><rect fill="#000" height="13.34" width="60"></rect><rect fill="#DD0000" height="13.33" width="60" y="13.34"></rect><rect fill="#FFCE00" height="13.33" width="60" y="26.67"></rect></svg><span>DE</span></a><a aria-label="Italiano" class="lang is-current" href="/it/" hreflang="it" lang="it" title="Italiano"><svg aria-hidden="true" viewbox="0 0 60 40"><rect fill="#009246" height="40" width="20"></rect><rect fill="#fff" height="40" width="20" x="20"></rect><rect fill="#CE2B37" height="40" width="20" x="40"></rect></svg><span>IT</span></a><a aria-label="Português" class="lang" href="/pt/" hreflang="pt" lang="pt" title="Português"><svg aria-hidden="true" viewbox="0 0 60 40"><rect fill="#DA291C" height="40" width="60"></rect><rect fill="#046A38" height="40" width="24"></rect><circle cx="24" cy="20" fill="#FFE900" r="7.5" stroke="#fff" stroke-width="1.4"></circle></svg><span>PT</span></a></div></div>
+<img alt="Romantic Cello" class="hero-logo" src="/images/logo-romantic-cello.png"/>
+<p class="hero-tag">Musica senza tempo. Un violoncello.<br/>Una serata che non dimenticherete.</p>
+<p class="hero-sub">Christian Grosselfinger · Violoncello solo</p>
+</div>
+<div class="hero-photo">
+<img alt="Christian Grosselfinger — Romantic Cello" src="/images/hero-rose.jpg"/>
+</div>
+<!-- nav lives at the .hero level, not inside hero-in, so it gets the full-width
+       hero to work with instead of being squeezed into the narrower text column -->
+<input class="nav-toggle-cb" id="nav-toggle" type="checkbox"/>
+<div class="wrap page-nav-wrap"><nav class="page-nav">
+<a href="#show">Concerto</a><a href="#watch">Video</a><a href="#repertoire">Repertorio</a>
+<a href="#about">Chi sono</a><a href="#media">Media</a><a href="#shows">Date</a>
+<a href="#subscribe">Iscriviti</a><a href="#venues">Locali</a><a href="#listen">Seguimi</a>
+</nav></div>
+<label aria-label="Menu" class="nav-burger" for="nav-toggle">☰</label>
+<div class="nav-overlay" onclick="if(event.target.tagName==='A')document.getElementById('nav-toggle').checked=false">
+<label aria-label="Chiudi il menu" class="nav-close" for="nav-toggle">✕</label>
+<a href="#show">Concerto</a><a href="#watch">Video</a><a href="#repertoire">Repertorio</a>
+<a href="#about">Chi sono</a><a href="#media">Media</a><a href="#shows">Date</a>
+<a href="#subscribe">Iscriviti</a><a href="#venues">Locali</a><a href="#listen">Seguimi</a>
+</div>
+</header>
+<!-- ════════ THE CONCERT ════════ -->
+<section id="show">
+<div class="wrap">
+<div class="split">
+<div>
+<div class="sec-label">Il concerto</div>
+<div class="sec-rule"></div>
+<p class="lead">C’è una ragione se il violoncello è detto lo strumento più vicino alla voce umana.</p>
+<p><strong>Romantic Cello</strong> è una serata costruita interamente su questa idea. Il violoncellista brasiliano Christian Grosselfinger esegue le melodie che tutti portano già dentro — <em>Nessun Dorma</em>, <em>Hallelujah</em>, <em>Now We Are Free</em>, <em>Con te Partirò</em>, <em>Experience</em> di Einaudi — ognuna cantata al violoncello su arrangiamenti orchestrali completi.</p>
+<p>Sono brani che il pubblico conosce prima della prima nota. Ciò che cambia è ascoltarli così: più lenti, più vicini, senza parole, con una voce che passa dritta oltre le orecchie. Chi non è mai stato a un concerto di questo tipo si ritrova a riconoscere ogni brano — e a sentirli tutti in modo diverso.</p>
+<p>È un programma intimo e profondamente emozionante, pensato per i luoghi in cui si viene ad ascoltare: chiese e cappelle, teatri, sale da concerto, centri culturali, ristoranti eleganti, matrimoni e feste private.</p>
+<p><strong>Un violoncellista. Musica che tutti amano già.</strong> Circa 90 minuti, adattati all’occasione.</p>
+</div>
+<div class="col-img">
+<img alt="Christian Grosselfinger con il suo violoncello" class="framed" src="/images/portrait-hero.jpg"/>
+</div>
+</div>
+</div>
+</section>
+<!-- ════════ QUOTE ════════ -->
+<div class="quote">
+<div class="wrap">
+<p>“Uno dei violoncellisti brasiliani più promettenti.”</p>
+<cite>FNAC Lisbon</cite>
+</div>
+</div>
+<!-- ════════ WATCH ════════ -->
+<section class="alt" id="watch">
+<div class="wrap">
+<div class="center">
+<div class="sec-label">Video</div>
+<div class="sec-rule"></div>
+</div>
+<div class="vid-grid">
+<a class="vid framed" href="https://www.instagram.com/reels/DAf6PYVtNz7/" rel="noopener" target="_blank">
+<img alt="Romantic Cello — video dal vivo" src="/images/paris.jpg"/><span class="play"><span></span></span></a>
+<a class="vid framed" href="https://www.instagram.com/reels/C_57gq0NDYt/" rel="noopener" target="_blank">
+<img alt="Romantic Cello — video dal vivo" src="/images/reel-2.jpg"/><span class="play"><span></span></span></a>
+<a class="vid framed" href="https://www.youtube.com/c/ChristianGrosselfinger" rel="noopener" target="_blank">
+<img alt="Christian Grosselfinger su YouTube" src="/images/street-2.jpg"/><span class="play"><span></span></span></a>
+</div>
+</div>
+</section>
+<!-- ════════ REPERTOIRE ════════ -->
+<section id="repertoire">
+<div class="wrap">
+<div class="center">
+<div class="sec-label">Repertorio</div>
+<div class="sec-rule"></div>
+</div>
+<div class="rep-grid">
+<div>
+<div class="rep-cat">Aria e canzone</div>
+<ul class="rep-list"><li>Nessun Dorma</li><li>Con te Partirò</li><li>Caruso</li></ul>
+</div>
+<div>
+<div class="rep-cat">Cinema</div>
+<ul class="rep-list"><li>Now We Are Free <em>(Gladiator)</em></li><li>Experience</li><li>Amélie</li></ul>
+</div>
+<div>
+<div class="rep-cat">Standard</div>
+<ul class="rep-list"><li>Moon River</li><li>What a Wonderful World</li><li>Fly Me to the Moon</li><li>My Way</li></ul>
+</div>
+<div>
+<div class="rep-cat">Moderno</div>
+<ul class="rep-list"><li>Hallelujah</li><li>Perfect</li><li>A Thousand Years</li><li>Shallow</li>
+<li>Someone Like You</li><li>Someone You Loved</li><li>All of Me</li><li>Stay With Me</li></ul>
+</div>
+<div>
+<div class="rep-cat">Set Coldplay</div>
+<ul class="rep-list"><li>Fix You</li><li>Yellow</li><li>The Scientist</li><li>Viva La Vida</li></ul>
+</div>
+<div>
+<div class="rep-cat">Inoltre</div>
+<ul class="rep-list"><li>Can’t Help Falling in Love</li><li>Bella Ciao</li></ul>
+</div>
+</div>
+<div class="rep-note">
+<p class="lead" style="margin-bottom:.5em">Questa è una selezione, non il programma completo.</p>
+<p style="margin-bottom:0">Molti altri brani sono pronti da suonare, e il programma si adatta alla sala, all’occasione e al pubblico. Se c’è un brano che il vostro pubblico amerebbe ascoltare, basta chiedere.</p>
+</div>
+</div>
+</section>
+<!-- ════════ THE CELLIST ════════ -->
+<section class="alt" id="about">
+<div class="wrap">
+<div class="split">
+<div class="col-img"><img alt="Christian Grosselfinger" class="framed" src="/assets/Pics/Romantic%20Cello/shoulders.jpg"/></div>
+<div>
+<div class="sec-label">Il violoncellista</div>
+<div class="sec-rule"></div>
+<p>Il violoncellista e compositore brasiliano <strong>Christian Grosselfinger</strong> è diplomato in Composizione all’UNIRIO (Università Federale dello Stato di Rio de Janeiro) e ha studiato violoncello privatamente a Lisbona con Paulo Gaio Lima della Metropolitana.</p>
+<p>Riconosciuto dalla <strong>FNAC Lisbona</strong> come “uno dei violoncellisti brasiliani più promettenti”, ha ricevuto il <strong>premio PROAC 2022</strong> ed è endorser ufficiale di <strong>REMIC Microphones</strong> (Danimarca).</p>
+<p>Ha suonato con orchestre come l’OSBJ (Rio de Janeiro), la Pro-Arte Orchestra e la Darstellende Kunst Orchestra (Vienna) e l’Academica da Metropolitana (Lisbona), con apparizioni alla Bienal Peace dell’UNESCO a Luanda e alla Virada Cultural Paulista.</p>
+<p>Dà circa <strong>36 concerti all’anno in tutta Europa</strong>, in tournée in camper e prenotando ogni data personalmente — in teatri, chiese, locali jazz e festival.</p>
+<p style="font-style:italic;color:var(--p-key-lt)">Romantic Cello è il programma a cui torna più spesso — quello per le sale che vogliono avvicinarsi e restare in silenzio.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ════════ MEDIA ════════ -->
+<section id="media">
+<div class="wrap">
+<div class="center">
+<div class="sec-label">Media</div>
+<div class="sec-rule"></div>
+</div>
+<div class="gal">
+<a href="/assets/Pics/Romantic%20Cello/0AACC870-12B7-42DE-B5E3-49B297482559.JPG" rel="noopener" target="_blank"><img alt="Christian Grosselfinger — Romantic Cello" loading="lazy" src="/assets/Pics/Romantic%20Cello/0AACC870-12B7-42DE-B5E3-49B297482559.JPG"/></a>
+<a href="/assets/Pics/Romantic%20Cello/IMG_4864.jpg" rel="noopener" target="_blank"><img alt="Romantic Cello, ora dorata" loading="lazy" src="/assets/Pics/Romantic%20Cello/IMG_4864.jpg"/></a>
+<a href="/assets/Pics/Romantic%20Cello/IMG_3865.JPG" rel="noopener" target="_blank"><img alt="Christian Grosselfinger che suona di notte" loading="lazy" src="/assets/Pics/Romantic%20Cello/IMG_3865.JPG"/></a>
+<a href="/assets/Pics/Romantic%20Cello/0F356F9D-E408-4515-BA56-9FDD984FAA82-web.jpg" rel="noopener" target="_blank"><img alt="Romantic Cello" loading="lazy" src="/assets/Pics/Romantic%20Cello/0F356F9D-E408-4515-BA56-9FDD984FAA82-web.jpg"/></a>
+<a href="/assets/Pics/Romantic%20Cello/IMG_3702.jpg" rel="noopener" target="_blank"><img alt="Christian Grosselfinger a una festa in giardino" loading="lazy" src="/assets/Pics/Romantic%20Cello/IMG_3702.jpg"/></a>
+<a href="/assets/Pics/Romantic%20Cello/AD22DDBC-FF76-4F01-9812-97689AE600CA.JPG" rel="noopener" target="_blank"><img alt="Christian Grosselfinger, spontaneo" loading="lazy" src="/assets/Pics/Romantic%20Cello/AD22DDBC-FF76-4F01-9812-97689AE600CA.JPG"/></a>
+<a href="/assets/Pics/Romantic%20Cello/IMG_5632.jpg" rel="noopener" target="_blank"><img alt="Romantic Cello, terrazza di sera" loading="lazy" src="/assets/Pics/Romantic%20Cello/IMG_5632.jpg"/></a>
+<a href="/assets/Pics/Romantic%20Cello/6F5B0CEB-BC8D-4458-B052-D59C9F765B7B.JPG" rel="noopener" target="_blank"><img alt="Christian Grosselfinger in un cortile" loading="lazy" src="/assets/Pics/Romantic%20Cello/6F5B0CEB-BC8D-4458-B052-D59C9F765B7B.JPG"/></a>
+</div>
+</div>
+</section>
+<!-- ════════ SHOWS ════════ -->
+<section class="alt" id="shows">
+<div class="wrap">
+<div class="center">
+<div class="sec-label">Date</div>
+<div class="sec-rule"></div>
+</div>
+<div class="ag">
+<div class="ag-row">
+<div class="ag-date">19 gen 2027</div>
+<div><div class="ag-venue">Café Galao</div><div class="ag-city">Stuttgart · Germania · 20:30</div><div class="ag-city">Ingresso libero · offerte gradite</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-stuttgart-cello-rock-pop-tickets-2004357628623" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">26 gen 2027</div>
+<div><div class="ag-venue">PARKS im Stadtpark</div><div class="ag-city">Norimberga · Germania · 19:30</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-nurnberg-cello-rock-pop-tickets-2003761313027" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">27 gen 2027</div>
+<div><div class="ag-venue">PARKS im Stadtpark</div><div class="ag-city">Norimberga · Germania · 19:30</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://epicscores.christiangrosselfinger.com/it/">Epic Scores</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/epic-scores-live-in-nurnberg-film-game-musik-live-tickets-2003761322054" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">28 gen 2027</div>
+<div><div class="ag-venue">Klub FAMU</div><div class="ag-city">Praga · Repubblica Ceca · 19:00</div><div class="ag-city">Con Taste The Lemon · ingresso 12 € (300 Kč) alla porta, prenotazione gratuita online</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-prague-cello-rock-pop-tickets-2004818481045" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">30 gen 2027</div>
+<div><div class="ag-venue">Zimmer 16</div><div class="ag-city">Berlino · Germania · 20:00</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-berlin-cello-rock-pop-tickets-2003761325063" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">31 gen 2027</div>
+<div><div class="ag-venue">Fazenda da Esperança – Gut Neuhof</div><div class="ag-city">Nauen · Germania · 18:00</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-nauen-cello-rock-pop-tickets-2004491559213" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row mine">
+<div class="ag-date">3 feb 2027</div>
+<div><div class="ag-venue">Cellebroederskapel</div><div class="ag-city">Maastricht · Paesi Bassi · 19:30</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/romantic-cello-in-maastricht-solocello-orkestbegeleiding-tickets-2001316669031" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row mine">
+<div class="ag-date">4 feb 2027</div>
+<div><div class="ag-venue">Christusgemeente (VPKB Antwerpen-Oost)</div><div class="ag-city">Anversa · Belgio · 20:00</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/romantic-cello-in-antwerpen-solocello-orkestbegeleiding-tickets-2003146117962" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row mine">
+<div class="ag-date">7 feb 2027</div>
+<div><div class="ag-venue">The Cavendish Arms</div><div class="ag-city">Londra · Regno Unito · 15:00</div><div class="ag-city">Con Xylaroo</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/romantic-cello-in-london-with-xylaroo-solo-cello-orchestral-arrangements-tickets-2004359108048" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">11 feb 2027</div>
+<div><div class="ag-venue">Chapel Street Arts Centre</div><div class="ag-city">Derby · Regno Unito · 19:30</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-derby-cello-rock-pop-tickets-2004360691785" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row mine">
+<div class="ag-date">13 feb 2027</div>
+<div><div class="ag-venue">Matt &amp; Phred's</div><div class="ag-city">Manchester · Regno Unito · 19:00</div><div class="ag-city">Biglietti tramite il locale — link in arrivo</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a> <span class="ag-ticket off">Tramite il locale</span></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">15 feb 2027</div>
+<div><div class="ag-venue">The Brunswick</div><div class="ag-city">Hove (Brighton) · Regno Unito · 19:30</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-brighton-cello-rock-pop-tickets-2004359096012" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row mine">
+<div class="ag-date">16 feb 2027</div>
+<div><div class="ag-venue">Tom Thumb Theatre</div><div class="ag-city">Margate · Regno Unito · 19:30</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/romantic-cello-in-margate-solo-cello-orchestral-arrangements-tickets-2004360712848" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">18 feb 2027</div>
+<div><div class="ag-venue">La Salle Verte</div><div class="ag-city">Dover · Regno Unito · 19:00</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://epicscores.christiangrosselfinger.com/it/">Epic Scores</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/epic-scores-live-in-dover-film-game-music-live-tickets-2004491808960" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">20 feb 2027</div>
+<div><div class="ag-venue">Le Repère de Torcy</div><div class="ag-city">Torcy · Francia</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://epicscores.christiangrosselfinger.com/it/">Epic Scores</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/epic-scores-live-a-torcy-musiques-de-films-et-de-jeux-en-direct-tickets-2004811843191" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row mine">
+<div class="ag-date">23 feb 2027</div>
+<div><div class="ag-venue">Macareu</div><div class="ag-city">Porto · Portogallo · 21:00</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/romantic-cello-no-porto-violoncelo-solo-arranjos-orquestrais-tickets-2004490063740" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">24 feb 2027</div>
+<div><div class="ag-venue">Macareu</div><div class="ag-city">Porto · Portogallo · 21:00</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://epicscores.christiangrosselfinger.com/it/">Epic Scores</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/epic-scores-live-no-porto-musica-de-filmes-e-jogos-ao-vivo-tickets-2004490066749" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">25 feb 2027</div>
+<div><div class="ag-venue">Macareu</div><div class="ag-city">Porto · Portogallo · 21:00</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-no-porto-violoncelo-rock-pop-tickets-2004490074773" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row mine">
+<div class="ag-date">10 mar 2027</div>
+<div><div class="ag-venue">Chapelle Notre-Dame de la Réconciliation</div><div class="ag-city">Lille · Francia · 20:00</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/romantic-cello-a-lille-violoncelle-solo-arrangements-orchestraux-tickets-2004281252179" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">12 mar 2027</div>
+<div><div class="ag-venue">Fazenda da Esperança – Kloster Mörmter</div><div class="ag-city">Xanten · Germania · 18:00</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-xanten-cello-rock-pop-tickets-2004491111875" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">13 mar 2027</div>
+<div><div class="ag-venue">Unperfekthaus</div><div class="ag-city">Essen · Germania · 19:00</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://epicscores.christiangrosselfinger.com/it/">Epic Scores</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/epic-scores-live-in-essen-film-game-musik-live-tickets-2003761330078" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">14 mar 2027</div>
+<div><div class="ag-venue">Unperfekthaus</div><div class="ag-city">Essen · Germania · 19:00</div><div class="ag-city">Con 5 Seconds to Move</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-essen-cello-rock-pop-tickets-2003761336096" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row mine">
+<div class="ag-date">15 mar 2027</div>
+<div><div class="ag-venue">Unperfekthaus</div><div class="ag-city">Essen · Germania · 19:00</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/romantic-cello-in-essen-solo-cello-orchesterarrangements-tickets-2004281771733" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row mine">
+<div class="ag-date">16 mar 2027</div>
+<div><div class="ag-venue">Péniche La Légia</div><div class="ag-city">Liegi · Belgio · 20:00</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/romantic-cello-a-liege-violoncelle-solo-arrangements-orchestraux-tickets-2003761340108" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">17 mar 2027</div>
+<div><div class="ag-venue">Péniche La Légia</div><div class="ag-city">Liegi · Belgio · 20:00</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://epicscores.christiangrosselfinger.com/it/">Epic Scores</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/epic-scores-live-a-liege-musiques-de-films-et-de-jeux-en-direct-tickets-2003761345123" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">18 mar 2027</div>
+<div><div class="ag-venue">Péniche La Légia</div><div class="ag-city">Liegi · Belgio · 20:00</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-a-liege-violoncelle-rock-pop-tickets-2003761377219" rel="noopener" target="_blank">Biglietti</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">19 mar 2027</div>
+<div><div class="ag-venue">Frankfurter Salon</div><div class="ag-city">Francoforte · Germania · 19:30</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-in-frankfurt-cello-rock-pop-tickets-2003146110941" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">25 mar 2027</div>
+<div><div class="ag-venue">Agropolis – Cascina Marasco</div><div class="ag-city">Cremona · Italia · 21:00</div><div class="ag-city">Parte del Luce &amp; Legno Fest — un ponte sonoro tra Brasile e Italia</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-a-cremona-luce-legno-fest-tickets-2004811833161" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+<div class="ag-row">
+<div class="ag-date">28 mar 2027</div>
+<div><div class="ag-venue">Auditorium Santa Croce al Tempio</div><div class="ag-city">Firenze · Italia · 19:30</div><div class="ag-city">Parte del Luce &amp; Legno Fest — un ponte sonoro tra Brasile e Italia</div></div>
+<div class="ag-actions"><a class="ag-tag" href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> <a class="ag-ticket" href="https://www.eventbrite.pt/e/cello-storm-a-firenze-luce-legno-fest-tickets-2004810293556" rel="noopener" target="_blank">Prenota</a></div>
+</div>
+</div>
+<p class="ag-note">Tour europeo · 19 gennaio – 28 marzo 2027. <strong>Romantic Cello</strong> le date sono evidenziate; il resto del tour è mostrato per contesto. Altre date saranno annunciate regolarmente.</p>
+<div class="btn-row" style="justify-content:center;margin-top:24px">
+<a class="btn" href="https://bnds.us/ig15j9" rel="noopener" target="_blank">Tutte le date su Bandsintown</a>
+</div>
+</div>
+</section>
+<!-- ════════ MAILING LIST ════════ -->
+<section id="subscribe">
+<div class="wrap">
+<div class="center">
+<div class="sec-label">Resta in contatto</div>
+<div class="sec-rule"></div>
+</div>
+<div class="ml">
+<p>Nuove date, nuove registrazioni e, ogni tanto, una nota dalla strada. Al massimo una volta a settimana, e mai condiviso con nessuno.</p>
+<form action="https://wixsite.us5.list-manage.com/subscribe/post?u=64c858c77c691dbe12c92278c&amp;id=60ce4e72f7" class="ml-form" method="post" novalidate="" target="_blank">
+<input aria-label="Indirizzo email" name="EMAIL" placeholder="tua@email.com" required="" type="email">
+<div aria-hidden="true" class="ml-hp"><input name="b_64c858c77c691dbe12c92278c_60ce4e72f7" tabindex="-1" type="text" value=""/></div>
+<button name="subscribe" type="submit">Iscriviti</button>
+</input></form>
+<p class="ml-small">Christian Grosselfinger · Puoi annullare l’iscrizione da qualsiasi email con un clic.</p>
+</div>
+</div>
+</section>
+<!-- ════════ FOR VENUES ════════ -->
+<section class="venues" id="venues">
+<div class="wrap">
+<div class="sec-label">Per locali e organizzatori</div>
+<div class="sec-rule"></div>
+<p style="max-width:62ch">Romantic Cello è pensato per essere facile da ospitare. Tutto funziona in autonomia con il sistema dell’artista — se avete un impianto e un mixer, c’è quasi niente da preparare.</p>
+<div class="spec">
+<div class="spec-item"><div class="spec-k">Sul palco</div><div class="spec-v">1 musicista — sempre in versione solista</div></div>
+<div class="spec-item"><div class="spec-k">Formato</div><div class="spec-v">Violoncello con basi orchestrali registrate</div></div>
+<div class="spec-item"><div class="spec-k">Durata</div><div class="spec-v">~90 minuti, adattabili</div></div>
+<div class="spec-item"><div class="spec-k">Palco minimo</div><div class="spec-v">3 × 2 m</div></div>
+<div class="spec-item"><div class="spec-k">Allestimento / soundcheck</div><div class="spec-v">1 ora / 30 minuti</div></div>
+<div class="spec-item"><div class="spec-k">Il locale fornisce</div><div class="spec-v">2 × XLR (stereo) · corrente sul palco · una sedia senza braccioli</div></div>
+</div>
+<p style="margin-top:26px">Box DI, microfono e monitoraggio sono tutti autonomi e portati dall’artista. Basta un mixer a 2 canali.</p>
+<div class="btn-row">
+<a class="btn" href="mailto:info@christiangrosselfinger.com?subject=Romantic%20Cello%20—%20Booking%20enquiry">Richiesta di prenotazione</a>
+</div>
+</div>
+</section>
+<!-- ════════ LISTEN ════════ -->
+<section id="listen">
+<div class="wrap">
+<div class="center">
+<div class="sec-label">Ascolta e segui</div>
+<div class="sec-rule"></div>
+</div>
+<div class="links">
+<a class="link-card" href="https://open.spotify.com/artist/0w6EcnHEJUxbB748ddGuq4" rel="noopener" target="_blank">Spotify</a>
+<a class="link-card" href="https://music.apple.com/br/artist/christian-grosselfinger/669639871?l=en" rel="noopener" target="_blank">Apple Music</a>
+<a class="link-card" href="https://www.youtube.com/c/ChristianGrosselfinger" rel="noopener" target="_blank">YouTube</a>
+<a class="link-card" href="https://instagram.com/iamchrisgrosselfinger" rel="noopener" target="_blank">Instagram</a>
+<a class="link-card" href="https://m.facebook.com/christiangrosselfinger" rel="noopener" target="_blank">Facebook</a>
+<a class="link-card" href="https://www.tiktok.com/@chrisgrosselfingercello" rel="noopener" target="_blank">TikTok</a>
+<a class="link-card" href="https://christiangrosselfinger.bandcamp.com" rel="noopener" target="_blank">Bandcamp</a>
+<a class="link-card" href="https://www.patreon.com/christiangrosselfinger" rel="noopener" target="_blank">Patreon</a>
+</div>
+</div>
+</section>
+<!-- ════════ FOOTER ════════ -->
+<footer>
+<div class="wrap">
+<a aria-label="Christian Grosselfinger — home" class="fname-link" href="https://christiangrosselfinger.github.io/it/">
+<img alt="Christian Grosselfinger" class="fname" src="/assets/Logos/Chris/chrisgrosselfinger_logo_video_Nomefundopreto_transparente.png"/>
+</a>
+<div class="fmeta">
+<a href="mailto:info@christiangrosselfinger.com">info@christiangrosselfinger.com</a><br/>
+<a href="tel:+393246097709">+39 324 6097709</a><br/>
+<a href="https://www.christiangrosselfinger.com">www.christiangrosselfinger.com</a>
+</div>
+<div class="fcopy"><a href="https://cellostorm.christiangrosselfinger.com/it/">Cello Storm</a> ·
+      <a href="https://epicscores.christiangrosselfinger.com/it/">Epic Scores Live</a> ·
+      <a class="here" href="https://romanticcello.christiangrosselfinger.com/it/">Romantic Cello</a></div>
+</div>
+</footer>
+</body>
+</html>
