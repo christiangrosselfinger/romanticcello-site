@@ -286,10 +286,11 @@ footer a:hover{text-decoration:underline}
   border:1px solid var(--p-line);background:var(--p-panel)}
 .ml p{max-width:52ch;margin:0 auto 22px}
 .ml-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.ml-form input[type=email]{flex:1 1 300px;max-width:380px;padding:14px 16px;font-family:'Inter',sans-serif;
+.ml-form input[type=email],.ml-form input[name=MMERGE5]{flex:1 1 300px;max-width:380px;padding:14px 16px;font-family:'Inter',sans-serif;
   font-size:14px;color:var(--p-head);background:transparent;border:1px solid var(--p-line);border-radius:2px}
-.ml-form input[type=email]::placeholder{color:var(--p-metal)}
-.ml-form input[type=email]:focus{outline:none;border-color:var(--p-key-lt)}
+.ml-form input[type=email]::placeholder,.ml-form input[name=MMERGE5]::placeholder{color:var(--p-metal)}
+.ml-form input[type=email]:focus,.ml-form input[name=MMERGE5]:focus{outline:none;border-color:var(--p-key-lt)}
+.ml-form input[name=MMERGE5]{flex:0 1 190px;max-width:190px}
 .ml-form button{padding:14px 30px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;
   text-transform:uppercase;cursor:pointer;background:var(--p-key);color:#fff;border:1px solid var(--p-key);
   border-radius:2px;transition:filter .25s ease}
@@ -306,7 +307,7 @@ footer a:hover{text-decoration:underline}
   .gal{grid-template-columns:repeat(2,1fr);gap:10px}
   .ag-row{grid-template-columns:1fr;gap:5px;padding:14px 12px}
   .ag-tag{justify-self:start;margin-top:7px}
-  .ml-form input[type=email]{flex:1 1 100%}
+  .ml-form input[type=email],.ml-form input[name=MMERGE5]{flex:1 1 100%;max-width:380px}
   .ml-form button{width:100%}
 }
 
@@ -1040,6 +1041,7 @@ footer a:hover{text-decoration:underline}
       once a week, and never shared with anyone.</p>
       <form class="ml-form" action="https://wixsite.us5.list-manage.com/subscribe/post?u=64c858c77c691dbe12c92278c&amp;id=60ce4e72f7" method="post" target="_blank" novalidate>
         <input type="email" name="EMAIL" placeholder="your@email.com" required aria-label="Email address" />
+        <input type="text" name="MMERGE5" placeholder="City (optional)" aria-label="City (optional)" autocomplete="address-level2" />
         <div class="ml-hp" aria-hidden="true"><input type="text" name="b_64c858c77c691dbe12c92278c_60ce4e72f7" tabindex="-1" value="" /></div>
         <button type="submit" name="subscribe">Subscribe</button>
       </form>
